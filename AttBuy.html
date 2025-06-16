@@ -14,18 +14,18 @@
 </head>
 <body>
   <div class="flex flex-col items-center justify-center w-full min-h-screen m-1 rounded-md ">
-    <div class="flex flex-col items-center justify-center w-full" x-data=attBuyFunc()>
+    <div class="flex flex-col items-center justify-center w-full" x-data=attBuyFunc() x-init="remain_points = total_points">
       <div class="md:min-w-[400px] min-w-8/10 grid grid-cols-4 gap-4" >
         <label class="input col-span-2 place-self-end max-w-[150px]">
           <span class="label">总点数</span>
-          <input type="text" x-model="[total_points]" x-init="remain_points = total_points" />
+          <input type="text" class="text-center" x-model="total_points" @change="getRemainPoints()"/>
         </label>
         <label class="input col-span-2 place-self-end max-w-[150px]">
-          <span class="label">剩余点数</span>
-          <input type="text" x-model="[remain_points]" />
+          <span class="label">剩余</span>
+          <input type="number" class="text-center" x-model="remain_points"  />
         </label>
         <template x-for="(item, index) in att_value" :key="index"  >
-          <div class="col-span-2  flex">
+          <div class="col-span-2  flex justify-self-end">
             <span class="label select-none w-[44px]" x-text="[att_name[index]]"></span>
             <div class="flex-1 join join-horizontal">
               <button class="btn join-item" @click="valueSubOne()" :disabled="subBtnDisable()">-</button>
@@ -44,8 +44,8 @@
 <script>
   function attBuyFunc() {
     return {
-      total_points: 25,
-      remain_points: 25,
+      total_points: '25',
+      remain_points: '25',
       att_name: ['力量','敏捷','体质','智力','感知','魅力'],
       att_value: new Array(6).fill(10),
       att_consumed: new Array(6).fill(0),
@@ -78,6 +78,7 @@
         this.remain_points = this.total_points - acc
 /*        console.log(this.remain_points)*/
       },
+
     }
   }
 </script>
