@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>游龙之年角色卡</title>
+    <script src="resources/alpinejs_3.14.9.js" defer></script>
+    <script src="resources/tailwindcss@4_1_10.js"></script>
+    <link href="resources/daisyui@5_0_43.css" rel="stylesheet" type="text/css" />
+<!--  <style>
+    * {
+      outline: 1px dashed red;
+    }
+  </style>-->
+</head>
+<body>
+<div id="app" class="flex flex-col items-center min-h-screen  pr-1 pl-1 rounded-md bg-gray-100" x-data="PlayerCard()">
+  <div id="character_card" class="w-3/5 m-[2px] min-h-screen flex flex-col bg rounded-md border p-1">
+    <div class="w-full flex gap-2 rounded-md border-2 border-gray-200 p-1">
+      <div class="flex-none border rounded-md">
+        <img src="assets/token.jpg" alt="user_token" class="size-[192px]">
+      </div>
+      <div class="flex-5 border rounded-md flex w-full flex-col">
+        <h1 class="h-[30px] text-center text-xl "> 基本信息 </h1>
+        <div class="container h-full flex ">
+          <div class="w-[80px] flex-none flex items-center justify-center">姓名</div>
+          <div class="flex-auto flex items-center justify-center" x-text="charName">希尔维安</div>
+        </div>
+        <div class="container h-full flex">
+          <div class="w-[80px] flex-none flex items-center justify-center">种族</div>
+          <div class="flex-auto flex items-center justify-center" x-text="charRace">精灵-日精灵</div>
+        </div>
+        <div class="container h-full flex">
+          <div class="w-[80px] flex-none flex items-center justify-center">年龄</div>
+          <div class="flex-auto flex items-center justify-center"  x-text="charAge">约160岁</div>
+        </div>
+        <div class="container h-full flex">
+          <div class="w-[80px] flex-none flex items-center justify-center">职业</div>
+          <div class="flex-auto max-w-full flex items-center justify-center" x-text="charJob">5法师/4观星者/5银月城法术守卫</div>
+        </div>
+        <div class="container h-full flex">
+          <div class="w-[80px] flex-none flex items-center justify-center">阵营</div>
+          <div class="flex-auto max-w-full flex items-center justify-center" x-text="charAlignment">混乱善良</div>
+        </div>
+      </div>
+      <div class="flex-4 border rounded-md flex w-full flex-col">
+        <h1 class="h-[30px] text-center text-xl"> 属性值 </h1>
+        <template x-for="idx in [0,1,2]" :key="idx">
+          <div class="container h-full  flex">
+            <div class="container h-full flex-1 flex">
+              <div class="w-[64px] flex-none flex items-center justify-center" x-text="charAttName[idx]">力量</div>
+              <div class="flex-auto flex items-center justify-center" x-text="charAttValue[idx]">10</div>
+              <div class="flex-auto flex items-center justify-center" x-text="[(charAttValue[idx]-10)/2]">+0</div>
+            </div>
+            <div class="container h-full flex-1 flex">
+              <div class="w-[64px] flex-none flex items-center justify-center" x-text="charAttName[idx+3]">智力</div>
+              <div class="flex-auto flex items-center justify-center" x-text="charAttValue[idx+3]">22</div>
+              <div class="flex-auto flex items-center justify-center" x-text="[(charAttValue[idx+3]-10)/2]">+4</div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1">
+      <div class="grid grid-cols-6 grid-rows-2 gap-1">
+        <div class="col-span-3">
+          <h1 class="text-center rounded-t-md bg-gray-500"> 防御 </h1>
+          <div class="flex rounded-b-md border">
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">正常AC</div>
+              <div class="text-center">18</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">接触AC</div>
+              <div class="text-center">19</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">措手不及</div>
+              <div class="text-center">20</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-3">
+          <h1 class="text-center rounded-t-md bg-gray-500"> 豁免 </h1>
+          <div class="flex rounded-b-md border">
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">强韧</div>
+              <div class="text-center">18</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">反射</div>
+              <div class="text-center">19</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">意志</div>
+              <div class="text-center">20</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-3">
+          <h1 class="text-center rounded-t-md bg-gray-500"> 战技 </h1>
+          <div class="flex rounded-b-md border">
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">CMB</div>
+              <div class="text-center">18</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">CMD</div>
+              <div class="text-center">19</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">失敏CMD</div>
+              <div class="text-center">20</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-3">
+          <h1 class="text-center rounded-t-md bg-gray-500"> 速度 </h1>
+          <div class="flex rounded-b-md border">
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">地面</div>
+              <div class="text-center">30</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">飞行</div>
+              <div class="text-center">19</div>
+            </div>
+            <div class="flex-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-300">飞行机动性</div>
+              <div class="text-center">一般</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-4 gap-1 mt-1">
+        <div class="col-span-1 flex flex-col justify-center">
+          <div class="text-center bg-gray-400 rounded-t-md">生命值</div>
+          <div class="text-center border rounded-b-md">20</div>
+        </div>
+        <div class="col-span-1 flex flex-col justify-center">
+          <div class="text-center bg-gray-400 rounded-t-md">先攻</div>
+          <div class="text-center border rounded-b-md tooltip tooltip-bottom" data-tip="hello">20</div>
+        </div>
+        <div class="col-span-1 flex flex-col justify-center">
+          <div class="text-center bg-gray-400 rounded-t-md">BAB</div>
+          <div class="text-center border rounded-b-md">22</div>
+        </div>
+        <div class="col-span-1 flex flex-col justify-center">
+          <div class="text-center bg-gray-400 rounded-t-md">法术抗力</div>
+          <div class="text-center border rounded-b-md">22</div>
+        </div>
+      </div>
+    </div>
+    <div id="角色语言" class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1">
+      <div class="flex flex-col justify-center">
+        <div class="text-center bg-gray-400 rounded-t-md">语言</div>
+        <div class="text-center border rounded-b-md grid grid-cols-8 place-items-center gap-1 p-1">
+          <template x-for="(item, index) in charLanguage" :key="index">
+            <div class="col-span-1 badge badge-neutral badge-outline" x-text="item"></div>
+          </template>
+        </div>
+      </div>
+    </div>
+    <div id="角色特性" class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1">
+      <div class="flex flex-col justify-center">
+        <div class="text-center bg-gray-400 rounded-t-md">特性</div>
+      </div>
+    </div>
+    <div id="角色专长" class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1">
+      <div class="flex flex-col justify-center">
+        <div class="text-center bg-gray-400 rounded-t-md">专长</div>
+      </div>
+    </div>
+    <div id="角色技能" class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1">
+      <div class="flex flex-col justify-center">
+        <div class="text-center bg-gray-400 rounded-t-md">技能</div>
+      </div>
+    </div>
+</div>
+
+<script src="js/PlayerCard_dragon.js"></script>
+</body>
+</html>
