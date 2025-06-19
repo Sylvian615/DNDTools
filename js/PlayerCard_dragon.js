@@ -1,15 +1,16 @@
 function PlayerCard() {
   return {
-    charName: "希尔维安",
-    charRace: "精灵-日精灵",
-    charAge: "约100岁",
-    charAlignment: "混乱善良",
-    charBelief: "普露拉",
+    charTokenFilename: charTokenFilename,
+    charName: charName,
+    charRace: charRace,
+    charAge: charAge,
+    charAlignment: charAlignment,
+    charBelief: charBelief,
     charJob: setCharJobs(charJobs),
     charAttName: ["力量", "敏捷", "体质", "智力", "感知", "魅力"],
     charAttValue: charAttValue,
     charAttModifier: charAttModifier,
-    charLanguage: ["通用语", "精灵语", "地底通用语", "龙语", "深渊语"],
+    charLanguage: charLanguage,
     charSpecial: charSpecial,
     charSpellLike: charSpellLike,
     charFeats: charFeats,
@@ -19,6 +20,21 @@ function PlayerCard() {
     charSkills: charSkills,
   };
 }
+//角色头像
+const charTokenFilename = "PixPin_2025-06-20_01-42-03.png";
+// 角色名称
+const charName = "一条还没想好名字的银龙";
+// 角色种族
+const charRace = "银龙";
+// 角色年龄
+const charAge = "刚刚破壳";
+// 角色阵营
+const charAlignment = "混乱善良";
+// 角色信仰
+const charBelief = "巴哈姆特？";
+
+// 角色所知语言
+const charLanguage = ["通用语", "精灵语", "地底通用语", "龙语", "深渊语"];
 
 // 角色等级与职业 --> 5法师/4观星者/5银月城法术守卫
 // [等级, 职业, 技能点每等级,]
