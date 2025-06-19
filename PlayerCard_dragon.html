@@ -112,60 +112,51 @@
               </div>
             </div>
           </div>
-          <div
-            id="属性值"
-            class="flex-4 border rounded-md flex w-full flex-col"
-          >
-            <template x-for="idx in [0,1,2]" :key="idx">
-              <div class="container h-full flex">
-                <div class="container h-full flex-1 flex p-2">
-                  <div
-                    class="w-[50px] flex-none flex items-center justify-center border rounded-l-xl bg-gray-300"
-                    x-text="charAttName[idx]"
-                  >
-                    力量
+        </div>
+
+        <div id="属性值" class="rounded-md border-2 border-gray-200 p-1">
+          <div class="min-w-full flex flex-col justify-center cursor-pointer">
+            <div
+              class="min-w-full text-center bg-gray-400 rounded-t-md"
+              @click="[contentShow = !contentShow]"
+            >
+              属性值
+            </div>
+            <div
+              class="text-center border rounded-b-md p-1 flex flex-col gap-2"
+            >
+              <div class="grid grid-cols-6 gap-1">
+                <template x-for="idx in [0,1,2,3,4,5]" :key="idx">
+                  <div class="container h-full flex">
+                    <div class="container h-full flex-1 flex p-2">
+                      <div
+                        class="w-[50px] flex-none flex items-center justify-center border rounded-l-xl bg-gray-300"
+                        x-text="charAttName[idx]"
+                      >
+                        力量
+                      </div>
+                      <div
+                        class="flex-auto flex items-center justify-center border-t border-b bg-gray-200"
+                        x-text="charAttValue[idx].attValue"
+                      >
+                        10
+                      </div>
+                      <div
+                        class="w-[34px] flex items-center justify-center border rounded-r-xl bg-gray-100"
+                        x-text="charAttModifier[idx]"
+                      >
+                        +0
+                      </div>
+                    </div>
                   </div>
-                  <div
-                    class="flex-auto flex items-center justify-center border-t border-b bg-gray-200"
-                    x-text="charAttValue[idx]"
-                  >
-                    10
-                  </div>
-                  <div
-                    class="w-[34px] flex items-center justify-center border rounded-r-xl bg-gray-100"
-                    x-text="[(charAttValue[idx]-10)/2]"
-                  >
-                    +0
-                  </div>
-                </div>
-                <div class="container h-full flex-1 flex p-2">
-                  <div
-                    class="w-[50px] flex-none flex items-center justify-center border rounded-l-xl bg-gray-300"
-                    x-text="charAttName[idx+3]"
-                  >
-                    智力
-                  </div>
-                  <div
-                    class="flex-auto flex items-center justify-center border-t border-b bg-gray-200"
-                    x-text="charAttValue[idx+3]"
-                  >
-                    22
-                  </div>
-                  <div
-                    class="w-[34px] flex items-center justify-center border rounded-r-xl bg-gray-100"
-                    x-text="[(charAttValue[idx+3]-10)/2]"
-                  >
-                    +4
-                  </div>
-                </div>
+                </template>
               </div>
-            </template>
+            </div>
           </div>
         </div>
-        <div
-          class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1"
-        >
-          <div class="grid grid-cols-6 grid-rows-2 gap-1">
+
+        <div class="w-full rounded-md border-2 border-gray-200 p-1">
+          <div class="grid grid-cols-6 grid-rows-2 gap-2">
             <div class="col-span-3">
               <h1 class="text-center rounded-t-md bg-gray-500">防御</h1>
               <div class="flex rounded-b-md border">
@@ -235,7 +226,7 @@
               </div>
             </div>
           </div>
-          <div class="grid grid-cols-4 gap-1 mt-1">
+          <div class="grid grid-cols-6 gap-1 mt-1">
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">生命值</div>
               <div class="text-center border rounded-b-md">20</div>
@@ -255,6 +246,14 @@
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">法术抗力</div>
+              <div class="text-center border rounded-b-md">22</div>
+            </div>
+            <div class="col-span-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-400 rounded-t-md">近战命中</div>
+              <div class="text-center border rounded-b-md">22</div>
+            </div>
+            <div class="col-span-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-400 rounded-t-md">远程命中</div>
               <div class="text-center border rounded-b-md">22</div>
             </div>
           </div>
@@ -298,9 +297,9 @@
               <template x-for="(item, index) in charSpecial" :key="index">
                 <div>
                   <button
-                    class="bg-gray-300 min-w-full rounded-2xl"
+                    class="bg-gray-300 min-w-full rounded-2xl text-start pl-4"
                     :onclick="['char_special_modal_'+(index+1)+'.showModal()']"
-                    x-text="[item[0]+'——'+item[1]]"
+                    x-text="[item[0]+'—'+item[1].source+'—'+item[1].action+'—'+item[1].numbers]"
                   >
                     open modal
                   </button>
@@ -313,7 +312,55 @@
                       </h3>
                       <p
                         class="py-4 whitespace-normal text-pretty"
-                        x-text="item[item.length-1]"
+                        x-text="item[1].description"
+                      ></p>
+                    </div>
+                    <form method="dialog" class="modal-backdrop">
+                      <button>close</button>
+                    </form>
+                  </dialog>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+        <div
+            id="角色类法术能力"
+            class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1"
+            x-data="{contentShow:true}"
+        >
+          <div class="flex flex-col justify-center cursor-pointer">
+            <div
+                class="text-center bg-gray-400 rounded-t-md"
+                @click="[contentShow = !contentShow]"
+            >
+              类法术能力
+            </div>
+            <div
+                class="text-center border rounded-b-md p-2 flex flex-col gap-2"
+                x-show="contentShow"
+                x-collapse
+                x-cloak
+            >
+              <template x-for="(item, index) in charSpellLike" :key="index">
+                <div>
+                  <button
+                      class="bg-gray-300 min-w-full rounded-2xl text-start pl-4"
+                      :onclick="['char_spell_like_modal_'+(index+1)+'.showModal()']"
+                      x-text="[item[0]+'—'+item[1].source+'—'+item[1].action+'—'+item[1].numbers]"
+                  >
+                    open modal
+                  </button>
+                  <dialog :id="['char_spell_like_modal_'+(index+1)]" class="modal">
+                    <div
+                        class="p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
+                    >
+                      <h3 class="text-lg font-bold" x-text="[item[0]]">
+                        Hello!
+                      </h3>
+                      <p
+                          class="py-4 whitespace-normal text-pretty"
+                          x-text="item[1].description"
                       ></p>
                     </div>
                     <form method="dialog" class="modal-backdrop">
@@ -346,20 +393,20 @@
               <template x-for="(item, index) in charFeats" :key="index">
                 <div>
                   <button
-                    class="bg-gray-300 min-w-full rounded-2xl"
+                    class="bg-gray-300 min-w-full rounded-2xl "
                     :onclick="['char_feats_modal_'+(index+1)+'.showModal()']"
-                    x-text="[item[0]+'——'+item[1]]"
+                    x-text="[item[0]+'—'+item[1].source]"
                   >
                     open modal
                   </button>
                   <dialog :id="['char_feats_modal_'+(index+1)]" class="modal">
                     <div
-                      class="p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
+                      class="p-2 min-w-2/5 max-w-9/10 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
                     >
                       <h3 class="text-lg font-bold" x-text="item[0]">Hello!</h3>
                       <p
                         class="py-4 whitespace-normal text-pretty"
-                        x-text="item[item.length-1]"
+                        x-text="item[1].description"
                       ></p>
                     </div>
                     <form method="dialog" class="modal-backdrop">
@@ -389,12 +436,12 @@
               x-collapse
               x-cloak
             >
-              <template x-for="(item, index) in charSpecial" :key="index">
+              <template x-for="(item, index) in charSpells" :key="index">
                 <div>
                   <button
                     class="bg-gray-300 min-w-full rounded-2xl"
                     :onclick="['char_spells_modal_'+(index+1)+'.showModal()']"
-                    x-text="[item[0]+'——'+item[1]]"
+                    x-text="[item[0]]"
                   >
                     open modal
                   </button>
@@ -405,7 +452,7 @@
                       <h3 class="text-lg font-bold" x-text="item[0]">Hello!</h3>
                       <p
                         class="py-4 whitespace-normal text-pretty"
-                        x-text="item[item.length-1]"
+                        x-text="item[1].description"
                       ></p>
                     </div>
                     <form method="dialog" class="modal-backdrop">
@@ -418,42 +465,61 @@
           </div>
         </div>
         <div
-            id="角色技能"
-            class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1"
-            x-data="{contentShow:true}"
+          id="角色技能"
+          class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1"
+          x-data="{contentShow:true}"
         >
           <div class="flex flex-col justify-center cursor-pointer">
             <div
-                class="text-center bg-gray-400 rounded-t-md"
-                @click="[contentShow = !contentShow]"
+              class="text-center bg-gray-400 rounded-t-md"
+              @click="[contentShow = !contentShow]"
             >
               技能
             </div>
             <div
-                class="text-center border rounded-b-md p-2 flex flex-col gap-2"
-                x-show="contentShow"
-                x-collapse
-                x-cloak
+              class="text-center border rounded-b-md p-2 flex flex-col gap-2"
+              x-show="contentShow"
+              x-collapse
+              x-cloak
             >
-              <div class="grid grid-cols-4 gap-2">
-                <template x-for="(item, index) in charSkills" :key="index">
-
-                  <div class="col-span-1">
-                    <div class="flex">
-                      <div class="min-w-[110px] bg-gray-400 rounded-l-2xl" x-text="item[0]"></div>
-                      <div class="flex-1 bg-gray-300" x-text="item[1]"></div>
-                      <div class="flex-1 bg-gray-200 rounded-r-2xl"  x-text="item[2]"></div>
-                    </div>
+              <div class="flex flex-col justify-center gap-2">
+                <div class="flex justify-center items-center">
+                  <div class="flex-1 flex justify-center items-center">
+                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">总属性点</div>
+                    <div class=" min-w-[100px] rounded-r-md border-r border-t border-b" x-text="charSkillTotalPoints">123</div>
                   </div>
-
-                </template>
+                  <div class="flex-1 flex justify-center items-center">
+                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">剩余属性点</div>
+                    <div class=" min-w-[100px] rounded-r-md border-r border-t border-b" x-text="[charSkillTotalPoints-charSkillUsedPoints]">123</div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-4 gap-2">
+                  <template x-for="(item, index) in charSkills" :key="index">
+                    <div class="col-span-1">
+                      <div class="flex">
+                        <div
+                          class="min-w-[110px] bg-gray-400 rounded-l-2xl"
+                          x-text="item[0]"
+                        ></div>
+                        <div class="flex-1 bg-gray-300" x-text="item[1]"></div>
+                        <div
+                          class="flex-1 bg-gray-200 rounded-r-2xl"
+                          x-text="item[2]"
+                        ></div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    <script src="js/SpecialList.js"></script>
+    <script src="js/SpellLikeList.js"></script>
+    <script src="js/FeatList.js"></script>
+    <script src="js/SpellList.js"></script>
     <script src="js/PlayerCard_dragon.js"></script>
   </body>
 </html>
