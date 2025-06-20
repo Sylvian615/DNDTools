@@ -162,15 +162,15 @@
               <div class="flex rounded-b-md border">
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">正常AC</div>
-                  <div class="text-center">18</div>
+                  <div class="text-center" x-text="[charAC.totalAC]">18</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">接触AC</div>
-                  <div class="text-center">19</div>
+                  <div class="text-center" x-text="[charAC.touchAC]">19</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">措手不及</div>
-                  <div class="text-center">20</div>
+                  <div class="text-center" x-text="[charAC.totalAC - charAttModifier[1]]">20</div>
                 </div>
               </div>
             </div>
@@ -179,15 +179,15 @@
               <div class="flex rounded-b-md border">
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">强韧</div>
-                  <div class="text-center">18</div>
+                  <div class="text-center" x-text="[charSavingThrows.Fortitude]">18</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">反射</div>
-                  <div class="text-center">19</div>
+                  <div class="text-center" x-text="[charSavingThrows.Reflex]">19</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">意志</div>
-                  <div class="text-center">20</div>
+                  <div class="text-center" x-text="[charSavingThrows.Will]">20</div>
                 </div>
               </div>
             </div>
@@ -196,15 +196,15 @@
               <div class="flex rounded-b-md border">
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">CMB</div>
-                  <div class="text-center">18</div>
+                  <div class="text-center" x-text="charCMB">xx</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">CMD</div>
-                  <div class="text-center">19</div>
+                  <div class="text-center" x-text="charCMD">xx</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">失敏CMD</div>
-                  <div class="text-center">20</div>
+                  <div class="text-center" x-text="[charCMD - charAttModifier[1]]">xx</div>
                 </div>
               </div>
             </div>
@@ -213,15 +213,15 @@
               <div class="flex rounded-b-md border">
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">地面</div>
-                  <div class="text-center">30</div>
+                  <div class="text-center" x-text="[charSpeed[0]]">30</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">飞行</div>
-                  <div class="text-center">19</div>
+                  <div class="text-center" x-text="[charSpeed[1]]">19</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">飞行机动性</div>
-                  <div class="text-center">一般</div>
+                  <div class="text-center" x-text="charFlyType">一般</div>
                 </div>
               </div>
             </div>
@@ -229,20 +229,20 @@
           <div class="grid grid-cols-6 gap-1 mt-1">
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">生命值</div>
-              <div class="text-center border rounded-b-md">20</div>
+              <div class="text-center border rounded-b-md" x-text="charHP">xx</div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">先攻</div>
               <div
                 class="text-center border rounded-b-md tooltip tooltip-bottom"
-                data-tip="hello"
+                data-tip="hello" x-text="[charInitiative.Initiative]"
               >
-                20
+                xx
               </div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">BAB</div>
-              <div class="text-center border rounded-b-md">22</div>
+              <div class="text-center border rounded-b-md" x-text="charBAB">22</div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">法术抗力</div>
@@ -250,11 +250,11 @@
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">近战命中</div>
-              <div class="text-center border rounded-b-md">22</div>
+              <div class="text-center border rounded-b-md" x-text="[charAB.nearAB]">xx</div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">远程命中</div>
-              <div class="text-center border rounded-b-md">22</div>
+              <div class="text-center border rounded-b-md" x-text="[charAB.farAB]">xx</div>
             </div>
           </div>
         </div>
@@ -520,6 +520,7 @@
     <script src="js/SpellLikeList.js"></script>
     <script src="js/FeatList.js"></script>
     <script src="js/SpellList.js"></script>
+    <script src="js/ValueMap.js"></script>
     <script src="js/PlayerCard_dragon.js"></script>
   </body>
 </html>
