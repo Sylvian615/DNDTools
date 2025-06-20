@@ -47,7 +47,7 @@ const charAlignment = "混乱善良";
 const charBelief = "巴哈姆特？";
 
 // 角色所知语言
-const charLanguage = ["通用语", "精灵语", "地底通用语", "龙语", "深渊语"];
+const charLanguage = ["通用语", "龙语", "精灵语"];
 
 // 角色等级与职业 --> 5法师/4观星者/5银月城法术守卫
 // [等级, 职业, 技能点每等级, 生命骰]
