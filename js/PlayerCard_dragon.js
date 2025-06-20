@@ -137,7 +137,12 @@ const charSpeed = DragonAge2Speed[DragonAge2Size[DragonAge]];
 const charFlyType = "良好";
 
 // 豁免
-const charSavingThrows = setCharSavingThrow(charJobs);
+const charSavingThrows = setCharSavingThrow(
+  charJobs,
+  charAttModifier[attMap.con],
+  charAttModifier[attMap.dex],
+  charAttModifier[attMap.wis],
+);
 
 // 角色BAB
 const charBAB = setCharBAB(charJobs);
@@ -317,10 +322,10 @@ function setCharAC(charACInfos) {
 }
 
 // 角色豁免计算
-function setCharSavingThrow(charJobs) {
-  let Fortitude = 0; // 强韧
-  let Reflex = 0; // 反射
-  let Will = 0; // 意志
+function setCharSavingThrow(charJobs, conModifier, dexModifier, wisModifier) {
+  let Fortitude = conModifier; // 强韧
+  let Reflex = dexModifier; // 反射
+  let Will = wisModifier; // 意志
   for (let i = 0; i < charJobs.length; i++) {
     const tempJobName = charJobs[i][1];
     const tempJobLevel = charJobs[i][0];
