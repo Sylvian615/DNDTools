@@ -72,7 +72,7 @@ const charACInfos = [
 const charFlyType = "良好";
 
 // 角色先攻 敏捷修正 + 各项加值
-const charInitiativeInfos = [[0, "xxx加值", true]];
+const charInitiativeInfos = [[0, "xxx加值", false]];
 
 // 角色类法术能力
 const charSpellLike = [["侦测邪恶", detect_evil]];

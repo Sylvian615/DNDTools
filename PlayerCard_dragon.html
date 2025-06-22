@@ -25,7 +25,7 @@
     >
       <div
         id="角色卡"
-        class="min-w-[900px]  m-[2px] min-h-[750px] flex flex-col bg rounded-md border p-1"
+        class="min-w-[900px] m-[2px] min-h-[750px] flex flex-col bg rounded-md border p-1"
         x-data="PlayerCard()"
       >
         <div
@@ -33,7 +33,11 @@
           class="w-full flex gap-2 rounded-md border-2 border-gray-200 p-1"
         >
           <div class="flex-none border rounded-md">
-            <img :src="['assets/'+charTokenFilename]" alt="user_token" class="size-[192px] rounded-md" />
+            <img
+              :src="['assets/'+charTokenFilename]"
+              alt="user_token"
+              class="size-[192px] rounded-md"
+            />
           </div>
           <div
             id="角色信息"
@@ -138,10 +142,15 @@
                         力量
                       </div>
                       <div
-                        class="flex-auto flex items-center justify-center border-t border-b bg-gray-200"
-                        x-text="charAttValue[idx].attValue"
+                        class="tooltip tooltip-bottom flex-auto flex items-center justify-center border-t border-b bg-gray-200"
                       >
-                        10
+                        <div x-text="charAttValue[idx].attValue"></div>
+                        <div class="tooltip-content">
+                          <div
+                            class="whitespace-pre-wrap text-start"
+                            x-text="[charAttValue[idx].attDetails]"
+                          ></div>
+                        </div>
                       </div>
                       <div
                         class="w-[34px] flex items-center justify-center border rounded-r-xl bg-gray-100"
@@ -164,32 +173,57 @@
               <div class="flex rounded-b-md border">
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">正常AC</div>
-                  <div class="text-center" x-text="[charAC.totalAC]">18</div>
+                  <div
+                    class="tooltip tooltip-bottom text-center"
+
+                  >
+                    <div x-text="[charAC.totalAC]">xx</div>
+                    <div class="tooltip-content">
+                      <div
+                        class="whitespace-pre-line text-start"
+                        x-text="[charAC.totalACDetails]"
+                      ></div>
+                    </div>
+                  </div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
-                  <div class="text-center bg-gray-300">接触AC</div>
+                  <div class="tooltip tooltip-bottom  text-center bg-gray-300" data-tip="失去护甲/盾牌/天生防御加值">接触AC</div>
                   <div class="text-center" x-text="[charAC.touchAC]">19</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
-                  <div class="text-center bg-gray-300">措手不及</div>
-                  <div class="text-center" x-text="[charAC.totalAC - charAttModifier[1]]">20</div>
+                  <div class="tooltip tooltip-bottom text-center bg-gray-300" data-tip="失去敏捷加值">措手不及</div>
+                  <div
+                    class="text-center"
+                    x-text="[charAC.totalAC - charAttModifier[1]]"
+                  >
+                    20
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-span-3">
-              <h1 class="text-center rounded-t-md bg-gray-500">豁免</h1>
+              <h1 class="text-center rounded-t-md bg-gray-500" ><div class="tooltip tooltip-bottom " data-tip="成长：强2+等级/2；弱0+等级/3">豁免</div></h1>
               <div class="flex rounded-b-md border">
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">强韧</div>
-                  <div class="text-center" x-text="[charSavingThrows.Fortitude]">18</div>
+                  <div
+                    class="text-center"
+                    x-text="[charSavingThrows.Fortitude]"
+                  >
+                    18
+                  </div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">反射</div>
-                  <div class="text-center" x-text="[charSavingThrows.Reflex]">19</div>
+                  <div class="text-center" x-text="[charSavingThrows.Reflex]">
+                    19
+                  </div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">意志</div>
-                  <div class="text-center" x-text="[charSavingThrows.Will]">20</div>
+                  <div class="text-center" x-text="[charSavingThrows.Will]">
+                    20
+                  </div>
                 </div>
               </div>
             </div>
@@ -197,16 +231,21 @@
               <h1 class="text-center rounded-t-md bg-gray-500">战技</h1>
               <div class="flex rounded-b-md border">
                 <div class="flex-1 flex flex-col justify-center">
-                  <div class="text-center bg-gray-300">CMB</div>
+                  <div class="tooltip tooltip-bottom text-center bg-gray-300" data-tip="CMB = BAB + 力量修正 + 体型修正">CMB</div>
                   <div class="text-center" x-text="charCMB">xx</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
-                  <div class="text-center bg-gray-300">CMD</div>
+                  <div class="tooltip tooltip-bottom text-center bg-gray-300" data-tip="CMD = 10 + BAB + 力量修正 + 敏捷修正 + 体型修正">CMD</div>
                   <div class="text-center" x-text="charCMD">xx</div>
                 </div>
                 <div class="flex-1 flex flex-col justify-center">
                   <div class="text-center bg-gray-300">失敏CMD</div>
-                  <div class="text-center" x-text="[charCMD - charAttModifier[1]]">xx</div>
+                  <div
+                    class="text-center"
+                    x-text="[charCMD - charAttModifier[1]]"
+                  >
+                    xx
+                  </div>
                 </div>
               </div>
             </div>
@@ -231,43 +270,68 @@
           <div class="grid grid-cols-6 gap-1 mt-1">
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">生命值</div>
-              <div class="text-center border rounded-b-md" x-text="charHP">xx</div>
+              <div class="text-center border rounded-b-md" x-text="charHP">
+                xx
+              </div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">先攻</div>
               <div
                 class="text-center border rounded-b-md tooltip tooltip-bottom"
-                data-tip="hello" x-text="[charInitiative.Initiative]"
+              >
+                <div x-text="[charInitiative.Initiative]"></div>
+                <div class="tooltip-content">
+                  <div
+                    class="whitespace-pre-wrap text-start"
+                    x-text="[charInitiative.InitiativeDetails]"
+                  >
+                    先攻构成
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-1 flex flex-col justify-center">
+              <div class="tooltip tooltip-bottom  text-center bg-gray-400 rounded-t-md" data-tip="成长：强1*等级；中3/4*等级；弱1/2*等级">BAB</div>
+              <div class="text-center border rounded-b-md" x-text="charBAB">
+                22
+              </div>
+            </div>
+            <div class="col-span-1 flex flex-col justify-center">
+              <div class="text-center bg-gray-400 rounded-t-md">法术抗力</div>
+              <div class="text-center border rounded-b-md" x-text="charSR">
+                xx
+              </div>
+            </div>
+            <div class="col-span-1 flex flex-col justify-center">
+              <div class="tooltip tooltip-bottom text-center bg-gray-400 rounded-t-md" data-tip="近战AB=BAB+力量修正+体型修正">近战命中</div>
+              <div
+                class="text-center border rounded-b-md"
+                x-text="[charAB.nearAB]"
               >
                 xx
               </div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
-              <div class="text-center bg-gray-400 rounded-t-md">BAB</div>
-              <div class="text-center border rounded-b-md" x-text="charBAB">22</div>
-            </div>
-            <div class="col-span-1 flex flex-col justify-center">
-              <div class="text-center bg-gray-400 rounded-t-md">法术抗力</div>
-              <div class="text-center border rounded-b-md" x-text="charSR">xx</div>
-            </div>
-            <div class="col-span-1 flex flex-col justify-center">
-              <div class="text-center bg-gray-400 rounded-t-md">近战命中</div>
-              <div class="text-center border rounded-b-md" x-text="[charAB.nearAB]">xx</div>
-            </div>
-            <div class="col-span-1 flex flex-col justify-center">
-              <div class="text-center bg-gray-400 rounded-t-md">远程命中</div>
-              <div class="text-center border rounded-b-md" x-text="[charAB.farAB]">xx</div>
+              <div class="tooltip tooltip-bottom  text-center bg-gray-400 rounded-t-md" data-tip="远程AB=BAB+敏捷修正+体型修正">远程命中</div>
+              <div
+                class="text-center border rounded-b-md"
+                x-text="[charAB.farAB]"
+              >
+                xx
+              </div>
             </div>
           </div>
         </div>
         <div
           id="角色语言"
           class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1"
+          x-data="{contentShow:true}"
         >
-          <div class="flex flex-col justify-center">
-            <div class="text-center bg-gray-400 rounded-t-md">语言</div>
+          <div class="flex flex-col justify-center cursor-pointer">
+            <div class="text-center bg-gray-400 rounded-t-md" @click="[contentShow = !contentShow]">语言</div>
             <div
               class="text-center border rounded-b-md grid grid-cols-8 place-items-center gap-1 p-1"
+              x-show="contentShow" x-collapse x-cloak
             >
               <template x-for="(item, index) in charLanguage" :key="index">
                 <div
@@ -327,42 +391,45 @@
           </div>
         </div>
         <div
-            id="角色类法术能力"
-            class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1"
-            x-data="{contentShow:true}"
+          id="角色类法术能力"
+          class="w-full flex-col gap-3 rounded-md border-2 border-gray-200 p-1"
+          x-data="{contentShow:true}"
         >
           <div class="flex flex-col justify-center cursor-pointer">
             <div
-                class="text-center bg-gray-400 rounded-t-md"
-                @click="[contentShow = !contentShow]"
+              class="text-center bg-gray-400 rounded-t-md"
+              @click="[contentShow = !contentShow]"
             >
               类法术能力
             </div>
             <div
-                class="text-center border rounded-b-md p-2 flex flex-col gap-2"
-                x-show="contentShow"
-                x-collapse
-                x-cloak
+              class="text-center border rounded-b-md p-2 flex flex-col gap-2"
+              x-show="contentShow"
+              x-collapse
+              x-cloak
             >
               <template x-for="(item, index) in charSpellLike" :key="index">
                 <div>
                   <button
-                      class="bg-gray-300 min-w-full rounded-2xl text-start pl-4"
-                      :onclick="['char_spell_like_modal_'+(index+1)+'.showModal()']"
-                      x-text="[item[0]+'—'+item[1].source+'—'+item[1].action+'—'+item[1].numbers]"
+                    class="bg-gray-300 min-w-full rounded-2xl text-start pl-4"
+                    :onclick="['char_spell_like_modal_'+(index+1)+'.showModal()']"
+                    x-text="[item[0]+'—'+item[1].source+'—'+item[1].action+'—'+item[1].numbers]"
                   >
                     open modal
                   </button>
-                  <dialog :id="['char_spell_like_modal_'+(index+1)]" class="modal">
+                  <dialog
+                    :id="['char_spell_like_modal_'+(index+1)]"
+                    class="modal"
+                  >
                     <div
-                        class="modal-box p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
+                      class="modal-box p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
                     >
                       <h3 class="text-lg font-bold" x-text="[item[0]]">
                         Hello!
                       </h3>
                       <p
-                          class="py-4 whitespace-pre-line text-start p-2"
-                          x-text="item[1].description"
+                        class="py-4 whitespace-pre-line text-start p-2"
+                        x-text="item[1].description"
                       ></p>
                     </div>
                     <form method="dialog" class="modal-backdrop">
@@ -500,13 +567,30 @@
             >
               <div class="flex flex-col justify-center gap-2">
                 <div class="flex justify-center items-center">
-                  <div class="flex-1 flex justify-center items-center">
-                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">总技能点</div>
-                    <div class=" min-w-[100px] rounded-r-md border-r border-t border-b" x-text="charSkillTotalPoints">123</div>
+                  <div class="min-w-[100px] rounded-md border pr-1 pl-1">
+                    #受训技能 *本职技能
                   </div>
                   <div class="flex-1 flex justify-center items-center">
-                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">剩余技能点</div>
-                    <div class=" min-w-[100px] rounded-r-md border-r border-t border-b" x-text="[charSkillTotalPoints-charSkillUsedPoints]">123</div>
+                    <div class="min-w-[150px] rounded-l-md border bg-gray-500">
+                      总技能点
+                    </div>
+                    <div
+                      class="min-w-[100px] rounded-r-md border-r border-t border-b"
+                      x-text="charSkillTotalPoints"
+                    >
+                      123
+                    </div>
+                  </div>
+                  <div class="flex-1 flex justify-center items-center">
+                    <div class="min-w-[150px] rounded-l-md border bg-gray-500">
+                      剩余技能点
+                    </div>
+                    <div
+                      class="min-w-[100px] rounded-r-md border-r border-t border-b"
+                      x-text="[charSkillTotalPoints-charSkillUsedPoints]"
+                    >
+                      123
+                    </div>
                   </div>
                 </div>
                 <div class="grid grid-cols-4 gap-2" x-data="PlayerSkills()">
@@ -516,16 +600,22 @@
                         <div
                           class="min-w-[100px] bg-gray-400 rounded-l-2xl"
                           x-text="[setSkillNameText(item)]"
-                        >技能名</div>
+                        >
+                          技能名
+                        </div>
                         <div class="flex-1 bg-gray-300" x-text="item[1]"></div>
                         <div
-                            class="flex-1 bg-gray-200 border-r"
-                            x-text="item[3]"
-                        >投入技能点</div>
+                          class="flex-1 bg-gray-200 border-r"
+                          x-text="item[3]"
+                        >
+                          投入技能点
+                        </div>
                         <div
                           class="flex-1 bg-gray-200 rounded-r-2xl"
                           x-text="setSkillValue(item)"
-                        >技能加值</div>
+                        >
+                          技能加值
+                        </div>
                       </div>
                     </div>
                   </template>

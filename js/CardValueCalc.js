@@ -90,7 +90,7 @@ function setCharAtt(attCfg) {
   for (let i = 0; i < attCfg.length; i++) {
     if (attCfg[i][2] === true) {
       tempValue += attCfg[i][0];
-      tempDetails += attCfg[i][1] + "\n";
+      tempDetails += `${attCfg[i][0]} [${attCfg[i][1]}] \n`;
     }
   }
   return {
@@ -137,9 +137,9 @@ function setCharAC(charACInfos) {
     true,
   ]);
   let totalAC = 10;
-  let totalACDetails = "";
+  let totalACDetails = "10 [基础]\n";
   let touchAC = 10;
-  let touchACDetails = "";
+  let touchACDetails = "10 [基础]\n";
   for (let i = 0; i < charACInfos.length; i++) {
     if (charACInfos[i][2] === true) {
       totalAC += charACInfos[i][0];
@@ -214,11 +214,11 @@ function setCharHP(charJobs, conModifier) {
 // 计算角色先攻
 function setCharInitiative(charInitiativeInfos, dexModifier) {
   let Initiative = dexModifier;
-  let InitiativeDetails = `${dexModifier} [敏捷调整值]`;
+  let InitiativeDetails = `${dexModifier} [敏捷调整值] \n`;
   for (let i = 0; i < charInitiativeInfos.length; i++) {
     if (charInitiativeInfos[i][2] === true) {
       Initiative += Number(charInitiativeInfos[i][0]);
-      InitiativeDetails += `${charInitiativeInfos[i][0]} [${charInitiativeInfos[i][1]} \n`;
+      InitiativeDetails += `${charInitiativeInfos[i][0]} [${charInitiativeInfos[i][1]}] \n`;
     }
   }
   return { Initiative, InitiativeDetails };
