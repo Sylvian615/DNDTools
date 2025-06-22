@@ -64,8 +64,9 @@ const attCha = [
 // 角色AC
 // AC = 10 + 护盾 + 盾牌 + 敏捷调整值 + 体型 + 其他
 const charACInfos = [
-  [0, "护盾加值", true],
+  [0, "护甲加值", true],
   [0, "盾牌加值", true],
+  [DragonAge2NaturalAC[DragonAge], "天生护甲", true],
 ];
 
 // 角色飞行机动性

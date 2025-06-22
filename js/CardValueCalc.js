@@ -125,11 +125,6 @@ function setAllUsedSkillsPoints(charSkills) {
 
 //角色AC计算
 function setCharAC(charACInfos) {
-  charACInfos.push([
-    DragonAge2NaturalAC[DragonAge],
-    `天生护甲-${DragonAge}`,
-    true,
-  ]);
   charACInfos.push([charAttModifier[attMap.dex], "敏捷修正加值", true]);
   charACInfos.push([
     Size2AC[DragonAge2Size[DragonAge]],
