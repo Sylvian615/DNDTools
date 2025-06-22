@@ -12,7 +12,7 @@ const charAge = `${DragonAge} 刚刚破壳`;
 // 角色阵营
 const charAlignment = "混乱善良";
 // 角色信仰
-const charBelief = "巴哈姆特？";
+const charBelief = "阿丝忒瑞娜？";
 
 // 角色所知语言
 const charLanguage = ["通用语", "龙语", "精灵语"];
