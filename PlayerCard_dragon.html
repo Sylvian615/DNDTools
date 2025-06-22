@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>游龙之年角色卡</title>
+    <script src="resources/alpinejs_collapse_3_x_x.js" defer></script>
     <script src="resources/alpinejs_3.14.9.js" defer></script>
+
     <script src="resources/tailwindcss@4_1_10.js"></script>
     <link
       href="resources/daisyui@5_0_43.css"
@@ -246,7 +248,7 @@
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">法术抗力</div>
-              <div class="text-center border rounded-b-md">22</div>
+              <div class="text-center border rounded-b-md" x-text="charSR">xx</div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">近战命中</div>
@@ -305,13 +307,13 @@
                   </button>
                   <dialog :id="['char_special_modal_'+(index+1)]" class="modal">
                     <div
-                      class="p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
+                      class="modal-box p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
                     >
                       <h3 class="text-lg font-bold" x-text="[item[0]]">
                         Hello!
                       </h3>
                       <p
-                        class="py-4 whitespace-normal text-pretty"
+                        class="py-4 whitespace-pre-line text-start p-2"
                         x-text="item[1].description"
                       ></p>
                     </div>
@@ -353,13 +355,13 @@
                   </button>
                   <dialog :id="['char_spell_like_modal_'+(index+1)]" class="modal">
                     <div
-                        class="p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
+                        class="modal-box p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
                     >
                       <h3 class="text-lg font-bold" x-text="[item[0]]">
                         Hello!
                       </h3>
                       <p
-                          class="py-4 whitespace-normal text-pretty"
+                          class="py-4 whitespace-pre-line text-start p-2"
                           x-text="item[1].description"
                       ></p>
                     </div>
@@ -385,7 +387,7 @@
               专长
             </div>
             <div
-              class="text-center border rounded-b-md p-2 flex flex-col gap-2"
+              class="text-center border rounded-b-md p-2 grid grid-cols-2 gap-2"
               x-show="contentShow"
               x-collapse
               x-cloak
@@ -393,7 +395,7 @@
               <template x-for="(item, index) in charFeats" :key="index">
                 <div>
                   <button
-                    class="bg-gray-300 min-w-full rounded-2xl "
+                    class="bg-gray-300 min-w-full rounded-2xl text-center"
                     :onclick="['char_feats_modal_'+(index+1)+'.showModal()']"
                     x-text="[item[0]+'—'+item[1].source]"
                   >
@@ -401,11 +403,11 @@
                   </button>
                   <dialog :id="['char_feats_modal_'+(index+1)]" class="modal">
                     <div
-                      class="p-2 min-w-2/5 max-w-9/10 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
+                      class="modal-box p-2 min-w-2/5 max-w-9/10 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
                     >
                       <h3 class="text-lg font-bold" x-text="item[0]">Hello!</h3>
                       <p
-                        class="py-4 whitespace-normal text-pretty"
+                        class="py-4 whitespace-pre-line text-start p-2"
                         x-text="item[1].description"
                       ></p>
                     </div>
@@ -436,22 +438,36 @@
               x-collapse
               x-cloak
             >
+              <div class="flex justify-start h-[24px] border rounded-md pl-4">
+                <div class="flex-1 flex" x-data="charSpellNum">
+                  <span>已知招式数：</span>
+                  <span x-text="[charSpellNum[0]]"></span>
+                </div>
+                <div class="flex-1 flex">
+                  <span>可准备招式数：</span>
+                  <span x-text="[charSpellNum[1]]"></span>
+                </div>
+                <div class="flex-1 flex">
+                  <span>已知步法数：</span>
+                  <span x-text="[charSpellNum[2]]"></span>
+                </div>
+              </div>
               <template x-for="(item, index) in charSpells" :key="index">
                 <div>
                   <button
-                    class="bg-gray-300 min-w-full rounded-2xl"
+                    class="bg-gray-300 min-w-full rounded-2xl text-start pl-4"
                     :onclick="['char_spells_modal_'+(index+1)+'.showModal()']"
-                    x-text="[item[0]]"
+                    x-text="[`${item[1].title}-${item[1].school}-${item[1].action}-${item[1].level}`]"
                   >
                     open modal
                   </button>
                   <dialog :id="['char_spells_modal_'+(index+1)]" class="modal">
                     <div
-                      class="p-2 min-w-2/5 max-w-3/5 min-h-2/5 max-h-2/5 bg-white rounded-md row-start-1 col-start-1"
+                      class="modal-box p-2 min-w-2/5 max-w-3/5 min-h-2/5 bg-white rounded-md row-start-1 col-start-1"
                     >
                       <h3 class="text-lg font-bold" x-text="item[0]">Hello!</h3>
                       <p
-                        class="py-4 whitespace-normal text-pretty"
+                        class="py-4 whitespace-pre-line text-start p-2"
                         x-text="item[1].description"
                       ></p>
                     </div>
@@ -485,27 +501,31 @@
               <div class="flex flex-col justify-center gap-2">
                 <div class="flex justify-center items-center">
                   <div class="flex-1 flex justify-center items-center">
-                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">总属性点</div>
+                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">总技能点</div>
                     <div class=" min-w-[100px] rounded-r-md border-r border-t border-b" x-text="charSkillTotalPoints">123</div>
                   </div>
                   <div class="flex-1 flex justify-center items-center">
-                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">剩余属性点</div>
+                    <div class=" min-w-[150px] rounded-l-md border bg-gray-500">剩余技能点</div>
                     <div class=" min-w-[100px] rounded-r-md border-r border-t border-b" x-text="[charSkillTotalPoints-charSkillUsedPoints]">123</div>
                   </div>
                 </div>
-                <div class="grid grid-cols-4 gap-2">
+                <div class="grid grid-cols-4 gap-2" x-data="PlayerSkills()">
                   <template x-for="(item, index) in charSkills" :key="index">
                     <div class="col-span-1">
                       <div class="flex">
                         <div
-                          class="min-w-[110px] bg-gray-400 rounded-l-2xl"
-                          x-text="item[0]"
-                        ></div>
+                          class="min-w-[100px] bg-gray-400 rounded-l-2xl"
+                          x-text="[setSkillNameText(item)]"
+                        >技能名</div>
                         <div class="flex-1 bg-gray-300" x-text="item[1]"></div>
                         <div
+                            class="flex-1 bg-gray-200 border-r"
+                            x-text="item[3]"
+                        >投入技能点</div>
+                        <div
                           class="flex-1 bg-gray-200 rounded-r-2xl"
-                          x-text="item[2]"
-                        ></div>
+                          x-text="setSkillValue(item)"
+                        >技能加值</div>
                       </div>
                     </div>
                   </template>
@@ -516,11 +536,14 @@
         </div>
       </div>
     </div>
+    <script src="js/ValueMap.js"></script>
     <script src="js/SpecialList.js"></script>
     <script src="js/SpellLikeList.js"></script>
     <script src="js/FeatList.js"></script>
     <script src="js/SpellList.js"></script>
-    <script src="js/ValueMap.js"></script>
+    <script src="js/SkillList.js"></script>
+    <script src="js/CardInfos.js"></script>
+    <script src="js/CardValueCalc.js"></script>
     <script src="js/PlayerCard_dragon.js"></script>
   </body>
 </html>

@@ -6,6 +6,9 @@ const Dodge = {
   先决条件：敏捷13。
   专长效果：你可以在AC上获得+1闪避加值。若你失去AC的敏捷加值时，也会同时失去此专长的加值。
 `,
+  effectFunc() {
+    charACInfos.push([1, "闪避", true]);
+  },
 };
 
 const BlindFight = {
@@ -24,6 +27,9 @@ const ImprovedInitiative = {
   description: `你对战斗的反应很快，使你能够迅速对危险做出反应。
 专长效果：先攻检定获得+4加值。
 `,
+  effectFunc() {
+    charInitiativeInfos.push([4, "精通先攻", true]);
+  },
 };
 
 const AdaptiveStyle = {
@@ -36,7 +42,7 @@ const AdaptiveStyle = {
 
 const ImprovedUnarmedStrike = {
   title: "精通徒手打击（Improved Unarmed Strike）〔战斗〕",
-  source: "贤者之剑1级特性流派专攻送",
+  source: "流派专攻",
   description: `你精通徒手作战的技巧。
   专长效果：即使徒手也视同持有武器，也就是说当你徒手攻击时，不会引发借机攻击。此外，你可以选择让你的徒手击打造成致命或非致命伤害。
 　　通常状况：无此专长者若徒手攻击则视为未武装，也只能造成非致命伤害。
@@ -54,3 +60,12 @@ const ImprovedManeuverability = {
   source: "6级龙专长",
   description: ``,
 };
+
+// 计算专长加值影响
+function processFeatList() {
+  for (let i = 0; i < charFeats.length; i++) {
+    if (charFeats[i][1].effectFunc) {
+      charFeats[i][1].effectFunc();
+    }
+  }
+}
