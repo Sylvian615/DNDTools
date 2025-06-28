@@ -32,7 +32,7 @@ const paralyzing_breath = {
 
 const cloudwalking = {
   title: "云行 Cloudwalking（Su）",
-  source: "游龙特性",
+  source: "幼龙特性",
   action: "被动",
   numbers: "NA",
   description: `幼龙开始，银龙可以如同在地面上一般在云雾上行走。`,

@@ -1,5 +1,5 @@
 // 龙的年龄层
-const DragonAge = "幼龙";
+const DragonAge = "雏龙";
 //角色头像
 // const charTokenFilename = "PixPin_2025-06-20_01-42-03-1.png";
 const charTokenFilename = "dragon-token-1.png";
@@ -20,8 +20,9 @@ const charLanguage = ["通用语", "龙语", "精灵语"];
 // 角色等级与职业 --> 5法师/4观星者/5银月城法术守卫
 // [等级, 职业, 技能点每等级, 生命骰]
 const charJobs = [
-  [6, "龙", 6, 12],
-  [1, "贤者之剑", 6, 8],
+  [4, "龙", 6, 12],
+  // [1, "贤者之剑", 4, 12],
+  // [1, "贤者之剑", 6, 8],
 ];
 
 // [属性值, 数值来源, 是否启用]
@@ -76,29 +77,36 @@ const charFlyType = "良好";
 const charInitiativeInfos = [[0, "xxx加值", false]];
 
 // 角色类法术能力
-const charSpellLike = [["侦测邪恶", detect_evil]];
+const charSpellLike = [
+  // ["侦测邪恶", detect_evil],
+];
 
 // 角色招式/法术
 const charSpells = [
   ["行在意前", ActionBeforeThrought],
-  ["狼抓", RabidWolfStrike],
-  ["红莲之剑", BurningBlade],
-  ["千幻防御", BafflingDefense],
-  ["巨山破", MountainHammer],
-  ["狡诈斗篷", CloakOfDeception],
-  ["避火决", FlamesBlessing],
+  ["剑刃壁障", WallofBlades],
+  ["铁心之力", IronHeartSurge],
+  ["战场之狼", TacticsofTheWolf],
+  // ["狼抓", RabidWolfStrike],
+  // ["红莲之剑", BurningBlade],
+  // ["千幻防御", BafflingDefense],
+  // ["巨山破", MountainHammer],
+  // ["狡诈斗篷", CloakOfDeception],
+  // ["避火决", FlamesBlessing],
 ];
 
 // 角色专长
+// [专长名, 专长变量, 专长来源]
 // .title .description
 const charFeats = [
-  ["闪避", Dodge],
-  ["盲斗", BlindFight],
-  ["精通先攻", ImprovedInitiative],
-  ["运用自如", AdaptiveStyle],
-  ["精通徒手打击", ImprovedUnarmedStrike],
-  ["飞跃攻击", FlybyAttack],
-  ["精通机动", ImprovedManeuverability],
+  // ["闪避", Dodge],
+  // ["盲斗", BlindFight],
+  // ["精通先攻", ImprovedInitiative],
+  // ["运用自如", AdaptiveStyle],
+  // ["精通徒手打击", ImprovedUnarmedStrike],
+  ["精通机动", ImprovedManeuverability, "1级通用专长"],
+  ["猛力攻击", PowerAttack, "3级通用专长"],
+  ["飞跃攻击", FlybyAttack, "3级龙专长"],
 ];
 
 // 角色特性/特殊能力
@@ -107,9 +115,13 @@ const charFeats = [
 const charSpecial = [
   ["变化形态 Change Shape（Su）", change_shape],
   ["麻痹喷吐 Paralyzing Breath（Su）", paralyzing_breath],
-  ["云行 Cloudwalking（Su）", cloudwalking],
-  ["快速行动+1", quick_to_act],
-  ["流派专攻（Discipline Focus）（Ex）", discipline_focus],
+  // ["云行 Cloudwalking（Su）", cloudwalking],
+  // ["快速行动+1", quick_to_act],
+  // ["流派专攻（Discipline Focus）（Ex）", discipline_focus],
 ];
+
+// [已知招式数,可准备招式数,已知步法数]
+const charSpellNum = [3, 3, 1];
+
 processSpecialList();
 processFeatList();

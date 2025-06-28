@@ -128,7 +128,7 @@ function setCharAC(charACInfos) {
   charACInfos.push([charAttModifier[attMap.dex], "敏捷修正加值", true]);
   charACInfos.push([
     Size2AC[DragonAge2Size[DragonAge]],
-    `体型加值-${DragonAge}-中型`,
+    `体型加值-${DragonAge}-${DragonAge2Size[DragonAge]}`,
     true,
   ]);
   let totalAC = 10;
@@ -197,13 +197,17 @@ function setCharCMD() {
 // 计算角色HP = 生命骰 + 体质调整值 / 等级
 function setCharHP(charJobs, conModifier) {
   let HP = 0;
+  let HPDetails = "";
   for (let i = 0; i < charJobs.length; i++) {
+    const tempJobName = charJobs[i][1];
     const tempJobLevel = Number(charJobs[i][0]);
     const tempJobHD = Number(charJobs[i][3]);
-    // (tempJobHD/2)+0.5 是取HD的期望 例如 D8期望4.5 在向上取整为5
-    HP += (tempJobHD / 2 + 1 + conModifier) * tempJobLevel;
+    // (tempJobHD/2)+0.5 是取HD的期望 例如 D8期望4.5 在向上取整为5 即再加0.5
+    const HD_Ex = tempJobHD / 2 + 0.5 + 0.5;
+    HP += (HD_Ex + conModifier) * tempJobLevel;
+    HPDetails += `${tempJobName} [${HD_Ex}(${tempJobHD}期望) + ${conModifier}(体质调整值)] * ${tempJobLevel}(等级)\n`;
   }
-  return HP;
+  return { HP, HPDetails };
 }
 
 // 计算角色先攻

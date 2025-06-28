@@ -270,8 +270,9 @@
           <div class="grid grid-cols-6 gap-1 mt-1">
             <div class="col-span-1 flex flex-col justify-center">
               <div class="text-center bg-gray-400 rounded-t-md">生命值</div>
-              <div class="text-center border rounded-b-md" x-text="charHP">
-                xx
+              <div class="tooltip tooltip-bottom text-center border rounded-b-md" >
+                <div x-text="[charHP.HP]"></div>
+                <div class="tooltip-content" x-text="[charHP.HPDetails]"></div>
               </div>
             </div>
             <div class="col-span-1 flex flex-col justify-center">
@@ -464,7 +465,7 @@
                   <button
                     class="bg-gray-300 min-w-full rounded-2xl text-center"
                     :onclick="['char_feats_modal_'+(index+1)+'.showModal()']"
-                    x-text="[item[0]+'—'+item[1].source]"
+                    x-text="[item[0]+'—'+item[2]]"
                   >
                     open modal
                   </button>
@@ -598,12 +599,12 @@
                     <div class="col-span-1">
                       <div class="flex">
                         <div
-                          class="min-w-[100px] bg-gray-400 rounded-l-2xl"
+                          class="min-w-[120px] bg-gray-400 rounded-l-2xl"
                           x-text="[setSkillNameText(item)]"
                         >
                           技能名
                         </div>
-                        <div class="flex-1 bg-gray-300" x-text="item[1]"></div>
+                        <div class="flex-2 bg-gray-300" x-text="item[1]"></div>
                         <div
                           class="flex-1 bg-gray-200 border-r"
                           x-text="item[3]"
