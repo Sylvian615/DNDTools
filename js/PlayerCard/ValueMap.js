@@ -90,6 +90,7 @@ function selectSavingThrowExpr(flag, level) {
 // [强韧, 反射, 意志] 1强 0弱
 const Job2SavingAdd = {
   龙: [1, 1, 1],
+  龙II: [1, 0, 0],
   贤者之剑: [0, 1, 1],
 };
 

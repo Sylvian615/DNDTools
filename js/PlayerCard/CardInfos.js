@@ -4,7 +4,7 @@ const DragonAge = "雏龙";
 // const charTokenFilename = "PixPin_2025-06-20_01-42-03-1.png";
 const charTokenFilename = "dragon-token-1.png";
 // 角色名称
-const charName = "一条还没想好名字的银龙";
+const charName = "瑟拉文 Selavyn";
 // 角色种族
 const charRace = "银龙";
 // 角色年龄

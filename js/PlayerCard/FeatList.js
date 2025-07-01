@@ -52,13 +52,20 @@ const ImprovedUnarmedStrike = {
 const FlybyAttack = {
   title: "飞跃攻击",
   source: "3级龙专长",
-  description: `xxx`,
+  description: `飞越（Flyby Attack） [一般专长]
+先决条件：飞行
+效果：飞行时，生物能在移动中的任何时候作标准动作。
+正常：没有此专长，生物只能在移动前或移动后作标准动作。
+`,
 };
 
 const ImprovedManeuverability = {
   title: "精通机动",
   source: "6级龙专长",
-  description: ``,
+  description: `精通机动（IMPROVED MANEUVERABILITY）[一般]
+你的飞行机动性提高。先决条件：飞行速度150英尺，盘旋或横转。
+效果：你的机动性提高一级，从笨拙到不良，不良到普通，或者普通到良好（见《城主指南》20页的空中战术移动）。
+特殊：你能多次选取该专长。每次选取该专长，你的机动性提高一级（但永远不能好于良好）。`,
 };
 const PowerAttack = {
   title: "猛力攻击（Power Attack）〔战斗〕",
