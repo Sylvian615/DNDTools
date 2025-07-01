@@ -107,6 +107,7 @@ const charFeats = [
   ["精通机动", ImprovedManeuverability, "1级通用专长"],
   ["猛力攻击", PowerAttack, "3级通用专长"],
   ["飞跃攻击", FlybyAttack, "3级龙专长"],
+  ["喷涂加强", HeightenBreath, "4级喷涂专长"],
 ];
 
 // 角色特性/特殊能力

@@ -59,6 +59,17 @@ const FlybyAttack = {
 `,
 };
 
+const HeightenBreath = {
+  title: "喷涂加强",
+  source: "",
+  description: `喷吐加强（HEIGHTEN BREATH）[超喷吐]
+  你的喷吐武器甚至比正常情况更致命了。
+  先决条件：体质13，喷吐武器。
+  效果：你能使你的喷吐武器的豁免DC增加至多等于你的体质加值的任意数量。
+  你每让豁免DC增加1点，你在再次使用你的喷吐武器前必须等待的回合数就增加+1。
+`,
+};
+
 const ImprovedManeuverability = {
   title: "精通机动",
   source: "6级龙专长",

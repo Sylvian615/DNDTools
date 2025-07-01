@@ -105,7 +105,8 @@ function setCharAttModVale(attValue) {
 
 // 计算角色总技能点
 function setSkillsTotalPoints(charJobs, skillAtt) {
-  let totalPoints = Number(charJobs[0][2]) * 3;
+  let totalPoints =
+    Number(charJobs[0][2] + Number(charAttModifier[attMap[skillAtt]])) * 3;
   for (let i = 0; i < charJobs.length; i++) {
     const tempPoint =
       (Number(charJobs[i][2]) + Number(charAttModifier[attMap[skillAtt]])) *
