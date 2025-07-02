@@ -106,8 +106,18 @@ const charFeats = [
   // ["精通徒手打击", ImprovedUnarmedStrike],
   ["精通机动", ImprovedManeuverability, "1级通用专长"],
   ["猛力攻击", PowerAttack, "3级通用专长"],
-  ["飞跃攻击", FlybyAttack, "3级龙专长"],
-  ["喷涂加强", HeightenBreath, "4级喷涂专长"],
+  ["飞跃攻击", FlybyAttack, "3级怪物专长"],
+  ["喷吐加强", HeightenBreath, "4级喷吐专长"],
+  ["军道占位符", PlaceHolder, "5级通用专长"],
+  ["龙II占位符", PlaceHolder, "6级战斗专长"],
+  ["龙II占位符", PlaceHolder, "7级通用专长"],
+  ["龙II占位符", PlaceHolder, "7级喷吐专长"],
+  ["龙II占位符", PlaceHolder, "8级怪物专长"],
+  ["龙II占位符", PlaceHolder, "9级通用专长"],
+  ["龙II占位符", PlaceHolder, "9级战斗专长"],
+  ["龙II占位符", PlaceHolder, "10级喷吐专长"],
+  ["龙II占位符", PlaceHolder, "11级通用专长"],
+  ["龙II占位符", PlaceHolder, "11级怪物专长"],
 ];
 
 // 角色特性/特殊能力

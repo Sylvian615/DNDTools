@@ -29,5 +29,6 @@ function PlayerCard() {
     charSkillTotalPoints: setSkillsTotalPoints(charJobs, "int"),
     charSkillUsedPoints: setAllUsedSkillsPoints(charSkills),
     charSkills: charSkills,
+    charBattleOptions: charBattleOptions,
   };
 }
