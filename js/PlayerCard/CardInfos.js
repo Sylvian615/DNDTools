@@ -85,8 +85,11 @@ const charSpellLike = [
 const charSpells = [
   ["行在意前", ActionBeforeThrought],
   ["剑刃壁障", WallofBlades],
-  ["铁心之力", IronHeartSurge],
-  ["战场之狼", TacticsofTheWolf],
+  ["领军冲锋", BattleLeadersCharge],
+  ["领导冲锋", LeadingTheCharge],
+  // ["惩戒之姿", PunishingStance],
+  // ["铁心之力", IronHeartSurge],
+  // ["战场之狼", TacticsofTheWolf],
   // ["狼抓", RabidWolfStrike],
   // ["红莲之剑", BurningBlade],
   // ["千幻防御", BafflingDefense],
