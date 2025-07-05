@@ -21,6 +21,7 @@ const charLanguage = ["通用语", "龙语", "精灵语"];
 // [等级, 职业, 技能点每等级, 生命骰]
 const charJobs = [
   [4, "龙", 6, 12],
+  [1, "军道之剑", 4, 12],
   // [1, "贤者之剑", 4, 12],
   // [1, "贤者之剑", 6, 8],
 ];
@@ -111,7 +112,7 @@ const charFeats = [
   ["猛力攻击", PowerAttack, "3级通用专长"],
   ["飞跃攻击", FlybyAttack, "3级怪物专长"],
   ["喷吐加强", HeightenBreath, "4级喷吐专长"],
-  ["军道占位符", PlaceHolder, "5级通用专长"],
+  ["恶魔之型", DemonicStyle, "5级通用专长"],
   ["龙II占位符", PlaceHolder, "6级战斗专长"],
   ["龙II占位符", PlaceHolder, "7级通用专长"],
   ["龙II占位符", PlaceHolder, "7级喷吐专长"],

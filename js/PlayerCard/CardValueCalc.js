@@ -160,6 +160,7 @@ function setCharSavingThrow(charJobs, conModifier, dexModifier, wisModifier) {
   for (let i = 0; i < charJobs.length; i++) {
     const tempJobName = charJobs[i][1];
     const tempJobLevel = charJobs[i][0];
+    // console.log(tempJobName, tempJobLevel);
     const tempSavingMap = Job2SavingAdd[tempJobName];
     Fortitude += selectSavingThrowExpr(tempSavingMap[0], Number(tempJobLevel));
     Reflex += selectSavingThrowExpr(tempSavingMap[1], Number(tempJobLevel));

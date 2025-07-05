@@ -102,6 +102,26 @@ const PlaceHolder = {
   description: `这是一个占位符`,
 };
 
+const DemonicStyle = {
+  title: "恶魔之型Demonic Style (战斗, 流派)",
+  source: "",
+  description: `恶魔之型Demonic Style (战斗, 流派)
+来源 位面冒险Planar Adventures pg. 27
+当你狂怒时自保无关紧要。
+先决条件: 猛力攻击, 基础攻击加值+1
+专长效果: 当你处于这种流派使用冲锋动作时，你在攻击检定上获得+1加值，并且作为冲锋动作的一部分你在近战攻击的伤害检定上获得+2加值。
+特殊情况: 如果你有狂暴或血怒职业特性，你可以进入恶魔之型姿态作为自由动作开启怒气的一部分。如果你这么做，当你狂暴结束时，该姿态也会结束。`,
+};
+
+const DeathFromAbove = {
+  title: "殃云天降（Death from Above）〔战斗〕",
+  source: "",
+  description: `殃云天降（Death from Above）〔战斗〕
+　　你利用重力来额外增加你冲锋的力道。
+　　专长效果：每当你从更高的地形或飞行状态从更高处冲锋你的敌人时，你从居高临下和冲锋获得的攻击检定加值变为+5。编注:从+3变成+5。
+`,
+};
+
 // 计算专长加值影响
 function processFeatList() {
   for (let i = 0; i < charFeats.length; i++) {
