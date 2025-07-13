@@ -1,4 +1,13 @@
 // {title:"", school:"", action:"", level:"", description:``}
+
+const SpellPlaceholder = {
+  title: "招式占位符",
+  school: "",
+  action: "",
+  level: "",
+  description: ``,
+};
+
 const ChildOfShadow = {
   title: "阴影宠儿（Child of shadow）",
   school: "影手流（架势技）",

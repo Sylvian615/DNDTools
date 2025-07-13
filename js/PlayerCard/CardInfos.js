@@ -1,5 +1,5 @@
 // 龙的年龄层
-const DragonAge = "雏龙";
+const DragonAge = "幼龙";
 //角色头像
 // const charTokenFilename = "PixPin_2025-06-20_01-42-03-1.png";
 const charTokenFilename = "dragon-token-1.png";
@@ -22,6 +22,7 @@ const charLanguage = ["通用语", "龙语", "精灵语"];
 const charJobs = [
   [4, "龙", 6, 12],
   [1, "军道之剑", 4, 12],
+  [1, "龙II", 6, 12],
   // [1, "贤者之剑", 4, 12],
   // [1, "贤者之剑", 6, 8],
 ];
@@ -78,9 +79,10 @@ const charFlyType = "良好";
 const charInitiativeInfos = [[0, "xxx加值", false]];
 
 // 角色类法术能力
-const charSpellLike = [
-  // ["侦测邪恶", detect_evil],
-];
+const charSpellLike = [["侦测邪恶", detect_evil]];
+
+// [已知招式数,可准备招式数,已知步法数]
+const charSpellNum = [4, 3, 1];
 
 // 角色招式/法术
 const charSpells = [
@@ -88,6 +90,7 @@ const charSpells = [
   ["剑刃壁障", WallofBlades],
   ["领军冲锋", BattleLeadersCharge],
   ["领导冲锋", LeadingTheCharge],
+  ["待定", SpellPlaceholder],
   // ["惩戒之姿", PunishingStance],
   // ["铁心之力", IronHeartSurge],
   // ["战场之狼", TacticsofTheWolf],
@@ -113,7 +116,7 @@ const charFeats = [
   ["飞跃攻击", FlybyAttack, "3级怪物专长"],
   ["喷吐加强", HeightenBreath, "4级喷吐专长"],
   ["恶魔之型", DemonicStyle, "5级通用专长"],
-  ["龙II占位符", PlaceHolder, "6级战斗专长"],
+  ["角魔之猛击", CornugonSmash, "6级战斗专长"],
   ["龙II占位符", PlaceHolder, "7级通用专长"],
   ["龙II占位符", PlaceHolder, "7级喷吐专长"],
   ["龙II占位符", PlaceHolder, "8级怪物专长"],
@@ -130,13 +133,10 @@ const charFeats = [
 const charSpecial = [
   ["变化形态 Change Shape（Su）", change_shape],
   ["麻痹喷吐 Paralyzing Breath（Su）", paralyzing_breath],
-  // ["云行 Cloudwalking（Su）", cloudwalking],
+  ["云行 Cloudwalking（Su）", cloudwalking],
   // ["快速行动+1", quick_to_act],
   // ["流派专攻（Discipline Focus）（Ex）", discipline_focus],
 ];
-
-// [已知招式数,可准备招式数,已知步法数]
-const charSpellNum = [3, 3, 1];
 
 processSpecialList();
 processFeatList();
